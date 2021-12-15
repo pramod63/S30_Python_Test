@@ -1,0 +1,32 @@
+##Sample
+
+        "name":"",
+        "address":"",
+        "lat":00000,
+        "long":00000
+
+
+"name":"Mangalore",
+"address":"Hotel Kamat",
+"lat":12.914142,
+"long":74.855957
+
+"name":"Udupi",
+"address":"Hotel Woodland",
+"lat":13.340881,
+"long":74.742142
+
+"name":"Manipal",
+"address":"Hotel Empire",
+"lat":13.360501,
+"long":74.786369
+
+"name":"Kundapur",
+"address":"Hotel RNS",
+"lat":20.704340,
+"long":84.610008
+
+"name":"Bhatkal",
+"address":"Hotel WesternGhat",
+"lat":13.997762,
+"long":74.540466
