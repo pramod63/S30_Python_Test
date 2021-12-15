@@ -3,7 +3,8 @@ import models
 import schemas
 from sqlalchemy.orm import Session
 from database import SessionLocal, engine
-from services import get_distance
+from typing import List
+from services import distance
 
 app = FastAPI()
 
@@ -18,7 +19,7 @@ def get_db():
         db.close()
 
 
-@app.get("/", status_code=201)
+@app.get("/")  # Get -- Operation
 def get_all_address(db: Session = Depends(get_db)):  # Path operation function
     all_data = db.query(models.Record).all()
     return {"data": all_data}
@@ -60,14 +61,16 @@ def update_address(address_id, request: schemas.Record, db: Session = Depends(ge
 
 
 @app.post("/addresses/")
-def retrieve_addresses(request: schemas.UserInput, db: Session = Depends(get_db)):
-    user_input = request.dict()
+def retrieve_addresses(request: schemas.UserInput, db: Session = Depends(get_db)):  # Path operation function
+    data = request.dict()
+    user_input = data["distance"]
+    user_input_long = data["long"]
+    user_input_lat = data["lat"]
     address = db.query(models.Record).all()
     final_result = []
     for data in address:
-        distance_in_km = get_distance(user_input["lat"], data.lat,
-                                      user_input["long"], data.long)
-        if distance_in_km <= data["distance"]:
+        distance_in_km = distance(user_input_lat, data.lat, user_input_long, data.long)
+        if distance_in_km <= user_input:
             each_result = {'Name': data.name, 'Address': data.address}
             final_result.append(each_result)
     return final_result

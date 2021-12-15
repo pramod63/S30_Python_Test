@@ -23,8 +23,8 @@
 
 "name":"Kundapur",
 "address":"Hotel RNS",
-"lat":20.704340,
-"long":84.610008
+"lat":13.623544,
+"long":74.691712
 
 "name":"Bhatkal",
 "address":"Hotel WesternGhat",
